@@ -1,64 +1,101 @@
-import { Mail } from "lucide-react";
+import React from "react";
 
-export default function Home() {
+const Home = () => {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-[#0B0E14] px-6 text-white">
-      <div className="max-w-2xl w-full text-center">
+    <div className="min-h-screen bg-linear-to-br from-[#202B4B] via-[#1A2439] to-[#0A0F1A] overflow-hidden">
 
-        {/* LOGO */}
-        <div className="flex justify-center mb-6">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center font-bold text-lg">
-              R
-            </div>
-            <h1 className="text-2xl font-semibold tracking-tight">RePurfy</h1>
-          </div>
-        </div>
-
-        {/* TITLE */}
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-          Something powerful is coming.
-        </h2>
-
-        <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-          AI-powered content repurposing that transforms articles, documents, videos, and notes
-          into platform-ready posts — instantly.
-        </p>
-
-        {/* EMAIL FORM */}
-        <form
-          action="https://formsubmit.co/hello@repurfy.com"
-          method="POST"
-          className="flex flex-col sm:flex-row items-center gap-3 justify-center"
-        >
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="Enter your email"
-            className="px-4 py-3 w-full sm:w-72 rounded-xl bg-white/10 text-white placeholder-gray-400
-                       border border-white/20 focus:outline-none focus:ring-2 focus:ring-green-400"
-          />
-
-          <button
-            type="submit"
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-green-400 to-blue-500 font-medium
-                       flex items-center gap-2 hover:opacity-90 transition"
-          >
-            <Mail size={18} />
-            Join Waitlist
-          </button>
-
-          {/* FormSubmit Hidden Fields */}
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="box" />
-        </form>
-
-        {/* FOOTER */}
-        <p className="mt-6 text-sm text-gray-500">
-          Get early access when we launch.
-        </p>
+      {/* --- Background Orbs --- */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl animate-pulse"></div>
+        <div
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: "1s" }}
+        ></div>
+        <div
+          className="absolute top-1/2 right-0 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: "2s" }}
+        ></div>
       </div>
-    </main>
+
+      {/* --- Main Layout --- */}
+      <div className="relative z-10 flex flex-col min-h-screen px-4 text-center">
+
+        {/* --- Hero Section --- */}
+        <section className="max-w-4xl mx-auto px-6 md:px-12 py-20 md:py-28 flex-grow">
+
+          {/* Logo / Title */}
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white">
+            Repurfy
+          </h1>
+
+          {/* Coming Soon Tag */}
+          <div className="flex items-center justify-center gap-3 mt-4 mb-6">
+            <div className="h-px w-12 bg-linear-to-r from-transparent to-cyan-500"></div>
+            <p className="text-cyan-400 text-sm uppercase tracking-wider font-medium">
+              Coming Soon
+            </p>
+            <div className="h-px w-12 bg-linear-to-l from-transparent to-cyan-500"></div>
+          </div>
+
+          {/* Subtitle */}
+          <p className="text-xl md:text-2xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Bring your content to life on every platform—fuelled by our{" "}
+            <span className="text-3xl font-bold bg-linear-to-r from-cyan-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+              next-gen AI content engine.
+            </span>
+          </p>
+
+          {/* Waitlist Button */}
+          <a
+            href="https://forms.gle/53BNApyitQJJdnCQ9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-7 py-3 rounded-xl bg-linear-to-r from-[#7C3AED] to-[#2563EB] text-white font-semibold shadow-lg hover:opacity-90 transition"
+          >
+            Join Waitlist
+          </a>
+
+          {/* --- Feature Cards --- */}
+          <div className="grid md:grid-cols-3 gap-6 mt-10">
+            {[
+              {
+                icon: "♻️",
+                label: "Smart Repurposing",
+                desc: "Turn any content into ready-to-post formats",
+              },
+              {
+                icon: "🌐",
+                label: "Multi-Platform Output",
+                desc: "Get platform-ready posts in one click",
+              },
+              {
+                icon: "🎯",
+                label: "Brand Control",
+                desc: "Stay consistent with custom tone & context",
+              },
+            ].map((feature, i) => (
+              <div
+                key={i}
+                className="bg-linear-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 rounded-xl p-3 backdrop-blur-sm hover:border-indigo-500/50 transition-colors"
+              >
+                <div className="text-3xl mb-3">{feature.icon}</div>
+                <h3 className="text-lg text-white font-semibold mb-2">
+                  {feature.label}
+                </h3>
+                <p className="text-gray-400 text-sm">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* --- Footer --- */}
+        <footer className="mb-6 text-slate-500 text-sm">
+          &copy; {new Date().getFullYear()} Repurfy. All rights reserved.
+        </footer>
+
+      </div>
+    </div>
   );
-}
+};
+
+export default Home;
