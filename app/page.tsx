@@ -79,7 +79,7 @@ const Home = () => {
                 className="bg-linear-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 rounded-xl p-3 backdrop-blur-sm hover:border-indigo-500/50 transition-colors"
               >
                 <div className="text-3xl mb-3">{feature.icon}</div>
-                <h3 className="text-white font-semibold mb-2">
+                <h3 className="text-white font-semibold mb-2 tracking-wide">
                   {feature.label}
                 </h3>
                 <p className="text-gray-400 text-sm">{feature.desc}</p>
