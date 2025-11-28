@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Home = () => {
@@ -24,9 +25,10 @@ const Home = () => {
         <section className="max-w-4xl mx-auto px-6 md:px-12 py-20 md:py-28 grow">
 
           {/* Logo / Title */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white trackin-wider">
-            Repurfy
-          </h1>
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <Image src="/logo.svg" alt="logo" width={80} height={80} />
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white trackin-wider"> Repurfy </h1>
+          </div>
 
           {/* Coming Soon Tag */}
           <div className="flex items-center justify-center gap-3 mt-4 mb-6">
