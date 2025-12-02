@@ -10,10 +10,10 @@ const HeroSection = () => {
     <div className="flex flex-col items-center justify-center gap-3 py-20 text-center">
       {/* <h1>Badge Content</h1> */}
       <div className="from-brand-blue via-brand-teal to-brand-purple relative rounded-full bg-linear-to-r p-0.5">
-        <Badge className="bg-brand-gradient-reverse dark:bg-background relative overflow-hidden rounded-full px-4 py-2 text-sm font-semibold text-white">
+        <Badge className="bg-brand-gradient-reverse relative overflow-hidden rounded-full px-4 py-2 text-sm font-semibold text-white">
           <span className="shimmer pointer-events-none absolute inset-0"></span>
           <span className="flex items-center gap-1">
-            <Sparkles className="h-4 w-4 animate-pulse text-yellow-500" />
+            <Sparkles className="h-4 w-4 text-yellow-500" />
             AI‑Powered Content Repurposing
           </span>
         </Badge>
@@ -33,7 +33,7 @@ const HeroSection = () => {
         {featureArray.map((feature, index) => (
           <Badge
             key={index}
-            className="dark:bg-card flex items-center gap-2 rounded-2xl bg-zinc-500 px-3 py-1 text-white transition-all dark:border dark:border-white/50"
+            className="dark:bg-card flex items-center gap-2 rounded-2xl bg-zinc-500 px-3 py-1 text-white transition-all dark:border dark:border-white/20"
           >
             <Check className="h-5! w-5!" />
             <p className="text-sm">{feature}</p>
@@ -42,30 +42,11 @@ const HeroSection = () => {
       </div>
 
       <div className="mt-10 flex gap-4 lg:gap-8">
-        <Button className="bg-brand-gradient rounded-xl">Start for Free</Button>
-        <Button variant="outline" className="text-gradient-teal-blue">
+        <Button className="bg-brand-gradient-reverse dark:text-text-primary rounded-xl px-6 py-3 font-semibold">
           Start for Free
         </Button>
-      </div>
-
-      <div className="mt-10 flex gap-4 lg:gap-8">
-        <Button className="bg-brand-gradient rounded-xl">Start for Free</Button>
-        <Button variant="outline" className="text-gradient-teal-blue">
-          Start for Free
-        </Button>
-      </div>
-
-      <div className="mt-10 flex gap-4 lg:gap-8">
-        <Button className="bg-brand-gradient rounded-xl">Start for Free</Button>
-        <Button variant="outline" className="text-gradient-teal-blue">
-          Start for Free
-        </Button>
-      </div>
-
-      <div className="mt-10 flex gap-4 lg:gap-8">
-        <Button className="bg-brand-gradient rounded-xl">Start for Free</Button>
-        <Button variant="outline" className="text-gradient-teal-blue">
-          Start for Free
+        <Button variant="outline" className="bg-card rounded-xl px-6 py-3 font-semibold">
+          Watch Demo
         </Button>
       </div>
     </div>
