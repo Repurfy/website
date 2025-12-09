@@ -1,58 +1,91 @@
-import React from 'react'
+'use client'
+
+import { motion } from 'framer-motion'
 import { Button } from '../ui/button'
 import { Badge } from '../ui/badge'
 import { ArrowRightIcon, Check, Sparkles } from 'lucide-react'
 
-const HeroSection = () => {
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+}
+
+const staggerContainer = {
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.2,
+    },
+  },
+}
+
+export default function HeroSection() {
   const featureArray = ['Auto Captioning', 'AI Hooks', 'Hashtag Generation']
 
   return (
-    <div className="flex flex-col items-center justify-center gap-3 py-20 text-center">
-      {/* <h1>Badge Content</h1> */}
-      <div className="from-brand-blue via-brand-teal to-brand-purple relative mt-12 mb-3 rounded-full bg-linear-to-r p-0.5">
-        <Badge className="shimmer bg-brand-gradient-reverse relative overflow-hidden rounded-full px-4 py-2 text-sm font-semibold text-white">
-          <span className="pointer-events-none absolute inset-0"></span>
-          <span className="flex items-center gap-1">
-            <Sparkles className="h-4! w-4!" />
-            AI‑Powered Content Repurposing
+    <motion.section
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      className="flex flex-col items-center justify-center gap-6 py-32 text-center sm:py-40"
+    >
+      {/* Badge Animation*/}
+      <motion.div variants={fadeUp}>
+        <Badge className="shimmer bg-brand-gradient-reverse rounded-full px-6 py-2 text-white shadow-lg">
+          <span className="flex items-center gap-2 text-[0.80rem] font-semibold">
+            <Sparkles className="animate-pulse" size={16} />
+            AI-Powered Content Repurposing
           </span>
         </Badge>
-      </div>
+      </motion.div>
 
-      <h1 className="font-ai text-2xl leading-10 font-semibold sm:text-5xl sm:leading-16 lg:text-7xl lg:leading-22">
+      {/* Heading */}
+      <motion.h1
+        variants={fadeUp}
+        className="font-ai max-w-4xl text-3xl leading-[1.2] font-bold sm:text-5xl lg:text-7xl"
+      >
         Create Once. <br />
-        Publish Everywhere.
-      </h1>
+        Publish <span className="text-brand-teal">Everywhere.</span>
+      </motion.h1>
 
-      <p className="text-text-secondary max-w-lg sm:max-w-3xl sm:text-xl">
+      {/* Subtext */}
+      <motion.p
+        variants={fadeUp}
+        className="text-text-secondary max-w-xl text-base sm:max-w-3xl sm:text-lg"
+      >
         One post. Endless content. Instantly optimized for every platform. Stop creating more —
-        repurpose smarter with AI
-      </p>
+        repurpose smarter with AI.
+      </motion.p>
 
-      <div className="mt-6 flex flex-wrap items-center justify-center gap-6 md:justify-between lg:gap-16">
+      {/* Feature badges */}
+      <motion.div
+        variants={staggerContainer}
+        className="flex flex-wrap justify-center gap-4 md:mt-3 md:mb-6"
+      >
         {featureArray.map((feature, index) => (
-          <Badge
+          <motion.div
+            variants={fadeUp}
             key={index}
-            className="dark:bg-card flex items-center gap-2 rounded-2xl bg-zinc-500 px-3 py-1 text-white transition-all dark:border dark:border-white/20"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
           >
-            <Check className="h-5! w-5!" />
-            <p className="text-sm">{feature}</p>
-          </Badge>
+            <Badge className="dark:bg-card flex items-center gap-2 rounded-xl border-white/20 bg-zinc-500 px-4 py-2 text-white dark:border">
+              <Check size={18} />
+              {feature}
+            </Badge>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      <div className="mt-10 flex gap-4 lg:gap-8">
-        <Button className="shimmer group bg-brand-gradient-reverse dark:text-text-primary focus:ring-brand-blue/30 flex w-[200px] items-center justify-center gap-2 rounded-full px-6 py-5 text-[16px] font-semibold transition-all hover:scale-[1.02] focus:ring-4 focus:outline-none active:scale-95">
-          Try Repurfy
-          <ArrowRightIcon className="transition-transform duration-200 group-hover:translate-x-1" />
-        </Button>
-
-        {/* <Button variant="outline" className="bg-card rounded-xl px-6 py-3 font-semibold">
-          Watch Demo
-        </Button> */}
-      </div>
-    </div>
+      {/* CTA Button */}
+      <motion.div variants={fadeUp}>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }}>
+          <Button className="shimmer group bg-brand-gradient-reverse dark:text-text-primary w-[210px] rounded-full py-5 text-base font-semibold">
+            Try Repurfy
+            <ArrowRightIcon className="ml-2" />
+          </Button>
+        </motion.div>
+      </motion.div>
+    </motion.section>
   )
 }
-
-export default HeroSection
